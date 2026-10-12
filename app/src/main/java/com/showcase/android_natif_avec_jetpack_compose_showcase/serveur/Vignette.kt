@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.LinearGradient
 import android.graphics.Paint
 import android.graphics.Shader
+import androidx.core.graphics.createBitmap
 import java.io.ByteArrayOutputStream
 
 /**
@@ -16,7 +17,7 @@ import java.io.ByteArrayOutputStream
  * (requête HTTP, cache disque Coil, décodage) est réellement exercé, hors ligne.
  */
 internal fun vignettePng(graine: Int, taille: Int = 320): ByteArray {
-    val bitmap = Bitmap.createBitmap(taille, taille, Bitmap.Config.ARGB_8888)
+    val bitmap = createBitmap(taille, taille)
     val canvas = Canvas(bitmap)
 
     val palette = listOf(

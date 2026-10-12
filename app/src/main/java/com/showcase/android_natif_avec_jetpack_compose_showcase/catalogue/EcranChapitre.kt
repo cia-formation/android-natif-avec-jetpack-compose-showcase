@@ -25,7 +25,9 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.showcase.android_natif_avec_jetpack_compose_showcase.R
 import com.showcase.android_natif_avec_jetpack_compose_showcase.socle.EtiquetteInfo
 
 /** Liste des leçons d'un chapitre : celles démontrées sur la branche, et celles à venir. */
@@ -47,7 +49,7 @@ fun EcranChapitre(
                 title = { Text("Chapitre $numeroChapitre") },
                 navigationIcon = {
                     IconButton(onClick = surRetour) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Retour")
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.action_retour))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(

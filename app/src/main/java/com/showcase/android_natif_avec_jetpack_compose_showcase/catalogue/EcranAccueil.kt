@@ -21,8 +21,10 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.showcase.android_natif_avec_jetpack_compose_showcase.R
 import com.showcase.android_natif_avec_jetpack_compose_showcase.socle.EtiquetteInfo
 
 /** Écran racine : la carte des 7 chapitres du cours. */
@@ -36,7 +38,7 @@ fun EcranAccueil(
         modifier = modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
-                title = { Text("Showcase Jetpack Compose") },
+                title = { Text(stringResource(R.string.catalogue_titre)) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surfaceContainer,
                 ),
