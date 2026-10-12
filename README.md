@@ -38,6 +38,32 @@ la branche courante sont marquées « à venir ».
 | `lecon/chCC-lLL-slug` | Une leçon, une démo |
 | `main` | Toutes les leçons mergées |
 
+### Leçons disponibles
+
+Chapitre 1 — Setup Android Studio et premier projet
+
+| Leçon | Branche | Démo |
+|---|---|---|
+| 1.1 | `lecon/ch01-l01-ecosysteme-android` | Chaîne de production interactive, et les trois SDK comparés à l'appareil |
+| 1.2 | `lecon/ch01-l02-installation-android-studio` | Fiche de l'appareil réel, détection d'émulateur, checklist d'installation |
+| 1.3 | `lecon/ch01-l03-projet-compose` | Arborescence dépliable commentée fichier par fichier |
+| 1.4 | `lecon/ch01-l04-gradle-dependances` | Les vrais fichiers de build du projet, embarqués dans l'APK |
+
+Chapitre 2 — Jetpack Compose, les fondamentaux
+
+| Leçon | Branche | Démo |
+|---|---|---|
+| 2.1 | `lecon/ch02-l01-paradigme-declaratif` | Mode impératif simulé contre déclaratif, compteurs de recompositions |
+| 2.2 | `lecon/ch02-l02-modifiers` | Bac à sable : la chaîne de modifiers se réordonne à la main |
+| 2.3 | `lecon/ch02-l03-layouts` | Playground Column / Row / Box avec arrangements, alignements et weight |
+| 2.4 | `lecon/ch02-l04-texte-images-ressources` | TextStyle pilotable, AnnotatedString, les trois chemins vers une image |
+| 2.5 | `lecon/ch02-l05-material3-theme` | Éditeur de thème vivant : clair/sombre, Dynamic Color, couples de couleurs |
+| 2.6 | `lecon/ch02-l06-listes-performantes` | 1 000 articles en LazyColumn, compteur d'éléments réellement composés |
+| 2.7 | `lecon/ch02-l07-formulaires` | Quatre champs : claviers adaptés, focus enchaîné, validation temps réel |
+| 2.8 | `lecon/ch02-l08-animations` | animate*AsState, AnimatedVisibility, Crossfade, avec curseur de durée |
+
+Les chapitres 3 à 7 suivront la même convention.
+
 Les conventions qui rendent ces 40 merges indolores sont dans [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Architecture

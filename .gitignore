@@ -11,3 +11,9 @@ local.properties
 
 # Identifiants Firebase propres a chaque apprenant : jamais dans git.
 app/google-services.json
+
+# Session Kotlin du compilateur
+.kotlin/
+
+# Session Kotlin du compilateur
+.kotlin/
