@@ -8,3 +8,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Identifiants Firebase propres a chaque apprenant : jamais dans git.
+app/google-services.json

@@ -1,5 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="Theme.Androidnatifavecjetpackcomposeshowcase" parent="android:Theme.Material.Light.NoActionBar" />
+    <!--
+      Thème XML minimal : il ne sert qu'au splash de l'Activity avant que Compose
+      ne prenne la main. Toute l'identité visuelle vit dans ui/theme/Theme.kt.
+    -->
+    <style name="Theme.Showcase" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>

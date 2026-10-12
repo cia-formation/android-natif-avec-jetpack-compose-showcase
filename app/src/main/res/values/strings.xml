@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">android-natif-avec-jetpack-compose-showcase</string>
+    <string name="app_name">Showcase Compose</string>
+    <string name="catalogue_titre">Showcase Jetpack Compose</string>
+    <string name="action_retour">Retour</string>
 </resources>
