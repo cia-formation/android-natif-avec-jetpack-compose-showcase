@@ -18,8 +18,8 @@ import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.showcase.android_natif_avec_jetpack_compose_showcase.BuildConfig
@@ -129,8 +129,12 @@ private val ETAPES_INSTALLATION = listOf(
 
 @Composable
 private fun DemoAtelier() {
-    val configuration = LocalConfiguration.current
     val densite = LocalDensity.current
+    // LocalWindowInfo donne la taille reelle du conteneur ; Configuration.screenWidthDp
+    // est deconseille depuis Compose 1.9 car ambigu en mode multi-fenetre.
+    val tailleConteneur = LocalWindowInfo.current.containerSize
+    val largeurDp = with(densite) { tailleConteneur.width.toDp() }
+    val hauteurDp = with(densite) { tailleConteneur.height.toDp() }
     val cochees = remember { mutableStateMapOf<String, Boolean>() }
 
     Column(
@@ -173,7 +177,7 @@ private fun DemoAtelier() {
             LigneValeur("Fabricant et modèle", "${Build.MANUFACTURER} ${Build.MODEL}")
             LigneValeur("Android", "${Build.VERSION.RELEASE} (API ${Build.VERSION.SDK_INT})")
             LigneValeur("Architecture", Build.SUPPORTED_ABIS.joinToString())
-            LigneValeur("Écran", "${configuration.screenWidthDp} × ${configuration.screenHeightDp} dp")
+            LigneValeur("Écran", "${largeurDp.value.toInt()} × ${hauteurDp.value.toInt()} dp")
             LigneValeur("Densité", "${densite.density}× (${(densite.density * 160).toInt()} dpi)")
             LigneValeur("Échelle des polices", "${densite.fontScale}×")
             LigneValeur("Build de la ROM", Build.ID)
