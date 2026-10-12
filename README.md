@@ -95,7 +95,7 @@ Pour les activer :
 |---|---|
 | AGP | 9.4.1 — **Kotlin intégré** (`android.builtInKotlin`), pas de `kotlin-android` |
 | Gradle | 9.6, toolchain JDK 25 auto-provisionnée |
-| Kotlin (plugins compose et serialization) | 2.2.10 |
+| Kotlin (plugins compose et serialization) | 2.4.21 |
 | KSP | 2.3.12 |
 | Hilt | 2.60.1 |
 | Compose BOM | 2026.02.01 (Material 3 1.4.0) |
@@ -105,6 +105,10 @@ Deux contraintes à connaître avant de toucher au build :
 
 - **AGP 9 active le Kotlin intégré**, et `kapt` y est incompatible. Toute génération de code
   passe par `ksp(...)`. KSP doit être en 2.3.1 ou plus, Hilt en 2.59 ou plus.
+- **Kotlin ne peut pas rester en arrière.** Coil 3.6.3 et le SDK Supabase 3.8.0 sont
+  compilés avec Kotlin 2.4 : leurs métadonnées de classes sont illisibles par un compilateur
+  2.2 ou 2.3 (« was compiled with an incompatible version of Kotlin »). D'où Kotlin 2.4.21,
+  qui fixe aussi la version des plugins compose et serialization.
 - **L'échappatoire existe mais est temporaire.** Si une future version de l'une de ces
   briques cassait, on peut repasser au plugin Kotlin classique avec
   `android.builtInKotlin=false` et `android.newDsl=false` dans `gradle.properties`, plus

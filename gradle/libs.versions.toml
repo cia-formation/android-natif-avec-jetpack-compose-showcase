@@ -1,7 +1,10 @@
 [versions]
 # Chaîne de build — ne pas modifier sur une branche de leçon (voir CONTRIBUTING.md).
 agp = "9.4.1"
-kotlin = "2.2.10"
+# Kotlin 2.4.x est un plancher, pas un choix de confort : Coil 3.6.3 et Supabase 3.8.0
+# sont compilés avec Kotlin 2.4 et un compilateur plus ancien ne sait pas lire leurs
+# métadonnées. Cette version pilote aussi les plugins compose et serialization.
+kotlin = "2.4.21"
 ksp = "2.3.12"
 # AGP 9 active le Kotlin intégré (android.builtInKotlin) : KSP >= 2.3.1 et Hilt >= 2.59
 # sont requis pour fonctionner avec, et kapt est incompatible — tout passe par ksp(...).
