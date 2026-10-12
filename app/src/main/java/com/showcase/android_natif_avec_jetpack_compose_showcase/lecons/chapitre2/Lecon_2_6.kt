@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -84,13 +85,20 @@ val lecon_2_6 = SpecLecon(
         ExtraitCode(
             titre = "Ne composer que le visible, mesuré",
             code = """
-                // rememberLazyListState donne accès à ce qui est réellement composé.
                 val etat = rememberLazyListState()
-                val visibles = etat.layoutInfo.visibleItemsInfo.size
+
+                // layoutInfo change à chaque frame de défilement : le lire directement
+                // dans la composition la rejouerait 60 fois par seconde. derivedStateOf
+                // confine la lecture et ne recompose que si la valeur change.
+                val visibles by remember(etat) {
+                    derivedStateOf { etat.layoutInfo.visibleItemsInfo.size }
+                }
                 // 1 000 éléments dans la liste, une vingtaine composés à l'écran.
             """.trimIndent(),
             commentaire = "C'est la mesure qu'affiche la démo : le compteur d'éléments " +
-                "composés reste constant alors que la liste en contient mille.",
+                "composés reste constant alors que la liste en contient mille. Noter le " +
+                "derivedStateOf : sans lui, l'affichage de la mesure coûterait plus cher " +
+                "que la liste elle-même.",
         ),
     ),
     pieges = listOf(
@@ -156,6 +164,17 @@ private fun DemoListesPerformantes() {
             ?: ARTICLES
     }
 
+    // Lire layoutInfo ou firstVisibleItemIndex directement dans la composition la
+    // rejoue a chaque frame de defilement — le defaut meme que cette lecon dejoue.
+    // derivedStateOf confine la lecture et ne declenche une recomposition que quand
+    // la valeur affichee change reellement.
+    val nombreComposes by remember(etatListe) {
+        derivedStateOf { etatListe.layoutInfo.visibleItemsInfo.size }
+    }
+    val premierVisible by remember(etatListe) {
+        derivedStateOf { etatListe.firstVisibleItemIndex }
+    }
+
     Column(
         modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -195,8 +214,8 @@ private fun DemoListesPerformantes() {
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 EtiquetteInfo("${articlesAffiches.size} dans la liste")
-                EtiquetteInfo("${etatListe.layoutInfo.visibleItemsInfo.size} composés")
-                EtiquetteInfo("index ${etatListe.firstVisibleItemIndex}")
+                EtiquetteInfo("$nombreComposes composés")
+                EtiquetteInfo("index $premierVisible")
             }
         }
 
